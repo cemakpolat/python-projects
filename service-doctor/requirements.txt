@@ -1,0 +1,4 @@
+influxdb-client
+schedule
+python-dotenv
+requests

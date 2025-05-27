@@ -89,8 +89,7 @@ service_failures = defaultdict(list)
 
 def check_service(service_name):
     """Check if a service is running using systemctl."""
-    # NOTE: This will NOT work for host services when running inside a container
-    # without significant host configuration or privileged access.
+
     try:
         result = subprocess.run(
             ["systemctl", "is-active", service_name],
@@ -301,10 +300,7 @@ def save_to_influxdb(service_name, event_type, success=False):
         return
 
     try:
-        # Using the InfluxDB 2.x client library
-        # The client is typically thread-safe and can be reused,
-        # but creating it inside the function is simpler for this example.
-        # For high-volume writes, instantiate the client globally or pass it.
+        
         with InfluxDBClient(url=influx_config["url"], token=influx_config["token"], org=influx_config["org"]) as client:
             # Use the write_api with SYNCHRONOUS mode for immediate write (simple, but less performant for bulk)
             # For better performance, use ASYNCHRONOUS or BATCHING
@@ -332,9 +328,6 @@ def scan_services():
     for service in CONFIG["services"]:
         logging.debug(f"Checking service: {service}")
 
-        # NOTE: This check will likely fail in a standard Docker container
-        # trying to check host services. Add dummy services to config.json
-        # like "dummy_service_1" if you want to test the failure/alert logic.
         if check_service(service):
             logging.debug(f"Service {service} is running")
             # Optionally log successful check
@@ -343,9 +336,6 @@ def scan_services():
         else:
             logging.warning(f"Service {service} is down, attempting to restart")
 
-            # Attempt to restart the service
-            # NOTE: This restart will likely fail in a standard Docker container
-            # trying to restart host services.
             restart_success = restart_service(service)
 
             if restart_success:
@@ -355,9 +345,6 @@ def scan_services():
             else:
                 logging.error(f"Failed to restart service {service}")
                 record_failure(service) # This will also trigger alert logic and save to InfluxDB
-                # Failure event is already recorded and saved in record_failure()
-                # if CONFIG["influxdb"]["enabled"]:
-                #     save_to_influxdb(service, "restart", False) # Or maybe a separate 'restart_failed' event?
 
     logging.info("Service scan completed")
 

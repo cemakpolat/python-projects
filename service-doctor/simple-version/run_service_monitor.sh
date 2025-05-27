@@ -4,7 +4,7 @@ set -e
 
 VENV_DIR="./venv"
 REQUIREMENTS_FILE="requirements.txt"
-SCRIPT="service_monitor.py"
+SCRIPT="main.py"
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 
 # --- Pre-checks ---
@@ -12,22 +12,22 @@ DOCKER_COMPOSE_FILE="docker-compose.yml"
 echo "🔍 Checking prerequisites..."
 
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python 3 is not installed. Please install Python 3."
+    echo "❌ Python 3 is not installed. Please install Python 3. Please run: ./prepare_env.sh""
     exit 1
 fi
 
 if ! command -v pip3 &> /dev/null; then
-    echo "❌ pip3 is not installed. Please install pip."
+    echo "❌ pip3 is not installed. Please install pip. Please run: ./prepare_env.sh""
     exit 1
 fi
 
 if ! command -v docker &> /dev/null; then
-    echo "❌ Docker is not installed. Please run: ./prepare.sh"
+    echo "❌ Docker is not installed. Please run: ./prepare_env.sh"
     exit 1
 fi
 
 if ! docker compose version &> /dev/null && ! docker-compose version &> /dev/null; then
-    echo "❌ Docker Compose is not installed. Please run: ./prepare.sh"
+    echo "❌ Docker Compose is not installed. Please run: ./prepare_env.sh"
     exit 1
 fi
 
@@ -59,5 +59,5 @@ if [ -f .env ]; then
 fi
 
 # --- Run monitor script ---
-echo "🚀 Starting service monitor with sudo..."
+echo "🚀 Starting service doctor with sudo..."
 sudo "$VENV_DIR/bin/python" "$SCRIPT"

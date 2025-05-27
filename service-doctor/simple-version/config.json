@@ -12,8 +12,8 @@
       "enabled": true,
       "smtp_server": "smtp.gmail.com",
       "smtp_port": 587,
-      "sender_email": "gtarc001@gmail.com",
-      "receiver_email": "gtarc001@gmail.com",
+      "sender_email": "@gmail.com",
+      "receiver_email": "@gmail.com",
       "password":""
     },
     "slack": {

@@ -1,0 +1,47 @@
+---
+config:
+  layout: fixed
+---
+flowchart TB
+    ServiceChecker["ServiceChecker - Abstract"] --> SystemdServiceChecker["SystemdServiceChecker"]
+    ServiceManager["ServiceManager - Abstract"] --> SystemdServiceManager["SystemdServiceManager"]
+    NotificationSender["NotificationSender - Abstract"] --> EmailSender["EmailNotificationSender"] & SlackSender["SlackNotificationSender"] & TeamsSender["TeamsNotificationSender"]
+    DatabaseRepository["DatabaseRepository - Abstract"] --> InfluxDB["InfluxDBRepository"] & Redis["RedisRepository"] & MongoDB["MongoDBRepository"]
+    ServiceDoctor["ServiceDoctor"] --> ConfigMgr["ConfigurationManager"] & SystemdServiceChecker & SystemdServiceManager & NotifFactory["NotificationSenderFactory"] & DBFactory["DatabaseRepositoryFactory"] & ServiceEvent["ServiceEvent - DataClass"] & NotifConfig["NotificationConfig - DataClass"] & DBConfig["DatabaseConfig - DataClass"]
+    NotifFactory --> EmailSender & SlackSender & TeamsSender
+    DBFactory --> InfluxDB & Redis & MongoDB
+    ServiceEvent --> EventType["EventType - Enum"]
+    NotifConfig --> NotifType["NotificationType - Enum"]
+    ConfigMgr --> NotifConfig & DBConfig
+     ServiceChecker:::abstract
+     SystemdServiceChecker:::concrete
+     ServiceManager:::abstract
+     SystemdServiceManager:::concrete
+     NotificationSender:::abstract
+     EmailSender:::concrete
+     SlackSender:::concrete
+     TeamsSender:::concrete
+     DatabaseRepository:::abstract
+     InfluxDB:::concrete
+     Redis:::concrete
+     MongoDB:::concrete
+     ServiceDoctor:::main
+     ConfigMgr:::config
+     ConfigMgr:::Rose
+     ConfigMgr:::Aqua
+     ConfigMgr:::main
+     NotifFactory:::factory
+     DBFactory:::factory
+     ServiceEvent:::dataclass
+     NotifConfig:::dataclass
+     DBConfig:::dataclass
+     EventType:::dataclass
+     NotifType:::dataclass
+    classDef abstract fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef concrete fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef factory fill:#fff8e1,stroke:#f57c00,stroke-width:2px
+    classDef dataclass fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef config fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef Rose stroke-width:1px, stroke-dasharray:none, stroke:#FF5978, fill:#FFDFE5, color:#8E2236
+    classDef Aqua stroke-width:1px, stroke-dasharray:none, stroke:#46EDC8, fill:#DEFFF8, color:#378E7A
+    classDef main fill:#ffebee, stroke:#d32f2f, stroke-width:3px

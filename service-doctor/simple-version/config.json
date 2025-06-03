@@ -1,0 +1,35 @@
+{
+  "services": [
+        "apache2", 
+        "ssh",
+        "nginx"
+  ],
+  "scan_interval_minutes": 1, 
+  "alert_threshold": 1,
+  "alert_window_hours": 0.1, 
+  "notification": {
+    "email": {
+      "enabled": true,
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 587,
+      "sender_email": "@gmail.com",
+      "receiver_email": "@gmail.com",
+      "password":""
+    },
+    "slack": {
+      "enabled": true,
+      "webhook_url": ""
+    },
+    "teams":{
+      "enabled": false,
+      "webhook_url": ""
+    }
+  }
+  ,"influxdb": {
+      "enabled": true,
+      "url": "",
+      "token": "",
+      "org": "",
+      "bucket": ""
+  }
+}

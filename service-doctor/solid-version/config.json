@@ -1,0 +1,70 @@
+{
+  "services": [
+    "nginx",
+    "apache2",
+    "postgresql",
+    "mysql",
+    "docker",
+    "ssh"
+  ],
+  "scan_interval_minutes": 0.5,
+  "alert_threshold": 3,
+  "alert_window_hours": 0.1,
+  "retention_hours": 168,
+  "databases": [
+    {
+      "type": "influxdb",
+      "enabled": true,
+      "config": {
+        "url": "http://localhost:8086",
+        "token": "service-doctor-token-123456789",
+        "org": "service-doctor",
+        "bucket": "service-events"
+      }
+    },
+    {
+      "type": "redis",
+      "enabled": true,
+      "config": {
+        "host": "localhost",
+        "port": 6379,
+        "password": "redispassword123"
+      }
+    },
+    {
+      "type": "mongodb",
+      "enabled": true,
+      "config": {
+        "connection_string": "mongodb://admin:mongopassword123@localhost:27017/service_doctor?authSource=admin",
+        "database": "service_doctor"
+      }
+    }
+  ],
+  "notifications": [
+    {
+      "type": "email",
+      "enabled": true,
+      "config": {
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "sender_email": "gtarc001@gmail.com",
+        "receiver_email": "gtarc001@gmail.com",
+        "password": ""
+      }
+    },
+    {
+      "type": "slack",
+      "enabled": true,
+      "config": {
+        "webhook_url": ""
+      }
+    },
+    {
+      "type": "teams",
+      "enabled": false,
+      "config": {
+        "webhook_url": ""
+      }
+    }
+  ]
+}

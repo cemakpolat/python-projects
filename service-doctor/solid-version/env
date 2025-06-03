@@ -1,0 +1,58 @@
+# InfluxDB Configuration
+DOCKER_INFLUXDB_INIT_MODE=setup
+DOCKER_INFLUXDB_INIT_USERNAME=admin
+DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword123
+DOCKER_INFLUXDB_INIT_ORG=service-doctor
+DOCKER_INFLUXDB_INIT_BUCKET=service-events
+DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=service-doctor-token-123456789
+
+# Redis Configuration
+REDIS_PASSWORD=redispassword123
+
+# RedisInsight Configuration
+RIPORT=8001
+RIHOST=0.0.0.0
+
+# Redis Commander Configuration
+REDIS_COMMANDER_HTTP_USER=admin
+REDIS_COMMANDER_HTTP_PASSWORD=redisadmin123
+REDIS_COMMANDER_REDIS_HOSTS=local:redis:6379:0:redispassword123
+
+# MongoDB Configuration
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=mongopassword123
+MONGO_INITDB_DATABASE=service_doctor
+
+# Mongo Express Configuration
+ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+ME_CONFIG_MONGODB_ADMINPASSWORD=mongopassword123
+ME_CONFIG_MONGODB_URL=mongodb://admin:mongopassword123@mongodb:27017/
+ME_CONFIG_BASICAUTH_USERNAME=admin
+ME_CONFIG_BASICAUTH_PASSWORD=express123
+
+# Database Configuration
+INFLUXDB_URL=http://localhost:8086
+INFLUXDB_TOKEN=service-doctor-token-123456789
+INFLUXDB_ORG=service-doctor
+INFLUXDB_BUCKET=service-events
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=redispassword123
+
+MONGODB_CONNECTION_STRING=mongodb://admin:mongopassword123@localhost:27017/service_doctor?authSource=admin
+
+# Email Configuration (Gmail example)
+EMAIL_PASSWORD=app-password-of-google
+
+# Slack Configuration
+SLACK_WEBHOOK_URL=https://your-organization.webhook.office.com/webhookb2/YOUR/SLACK/WEBHOOK
+
+# Microsoft Teams Configuration
+TEAMS_WEBHOOK_URL=https://your-organization.webhook.office.com/webhookb2/YOUR/TEAMS/WEBHOOK
+
+# Optional: Override default configuration
+# SCAN_INTERVAL_MINUTES=5
+# ALERT_THRESHOLD=3
+# ALERT_WINDOW_HOURS=1
+# RETENTION_HOURS=168

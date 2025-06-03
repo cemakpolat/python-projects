@@ -1,5 +1,5 @@
 
-# A Lightweight Service Doctor/Monitor for Linux Environments
+# A Lightweight Service Doctor/Monitor for Linux Environments using SOLID principles
 
 Add executable permission for the files  `prepare_env.sh` and `run_service_monitor.sh` via `chmod +x`
 

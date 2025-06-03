@@ -32,6 +32,6 @@ Restart apps:
 
 Clean all containers and related networks and volumes, as well as virtual environment for python is removed as well.
 
-`run_service_doctor.sh cleam` 
+`run_service_doctor.sh clean` 
 
 

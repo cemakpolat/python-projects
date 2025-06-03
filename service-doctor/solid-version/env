@@ -43,10 +43,10 @@ REDIS_PASSWORD=redispassword123
 MONGODB_CONNECTION_STRING=mongodb://admin:mongopassword123@localhost:27017/service_doctor?authSource=admin
 
 # Email Configuration (Gmail example)
-EMAIL_PASSWORD=hldx xnwa nvym ptil
+EMAIL_PASSWORD=app-password-of-google
 
 # Slack Configuration
-SLACK_WEBHOOK_URL=https://hooks.slack.com/services/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
+SLACK_WEBHOOK_URL=https://your-organization.webhook.office.com/webhookb2/YOUR/SLACK/WEBHOOK
 
 # Microsoft Teams Configuration
 TEAMS_WEBHOOK_URL=https://your-organization.webhook.office.com/webhookb2/YOUR/TEAMS/WEBHOOK

@@ -29,4 +29,5 @@ This tool monitors critical Linux services and notifies you in case of failures.
    ```bash
    ./run_service_monitor.sh
    ```
+To read on Medium: https://medium.com/@akpolatcem/building-a-reliable-simple-linux-service-monitor-8c34ac96fb3f
 

@@ -1,37 +1,71 @@
+## 🩺 A Lightweight Service Doctor for Linux Environments (Powered by SOLID Principles)
 
-# A Lightweight Service Doctor/Monitor for Linux Environments using SOLID principles
+To get started, follow the steps below to set up and run the Service Doctor application in your Linux environment.
 
-Add executable permission for the files  `prepare_env.sh` and `run_service_monitor.sh` via `chmod +x`
+### 🔧 Setup Instructions
 
-Run `prepare_env.sh` to install python, docker and docker compose
+1. **Make Shell Scripts Executable**
+   Grant execute permission to the setup and management scripts:
 
-env file includes all credentials, therefore you need to configure it and copy to .env file as given below:
+   ```bash
+   chmod +x prepare_env.sh run_service_doctor.sh
+   ```
 
-`copy env .env`
+2. **Install Dependencies**
+   Run the environment setup script to install Python, Docker, and Docker Compose:
 
-If you need to adapt the services to be checked, you can confifure `config.sjon` such as enabling a service or disabling it.
+   ```bash
+   ./prepare_env.sh
+   ```
 
+3. **Configure Environment Variables**
+   The `.env` file holds all sensitive credentials (e.g., email, Redis, MongoDB, Slack/Teams webhooks).
+   Copy the example file and update it with your configuration:
 
-Once we are done with the required libraries and configuration, we can utilize `run_service_doctor.sh` command to perform a number of operaitons, e.g.
+   ```bash
+   cp env .env
+   ```
 
-Start:
+4. **Update Service Configuration (Optional)**
+   You can customize which services are monitored or disabled by editing the `config.json` file.
 
- `run_service_doctor.sh start` 
+---
 
-Watch Logs:
+### 🚀 Running the Service Doctor
 
-`run_service_doctor.sh watch` 
+Use the `run_service_doctor.sh` script to control the application:
 
-Stop apps:
+* **Start the Application**
+  Launch all required services and the monitoring app:
 
-`run_service_doctor.sh stop` 
+  ```bash
+  ./run_service_doctor.sh start
+  ```
 
-Restart apps:
+* **Watch Logs**
+  Stream application logs in real-time:
 
-`run_service_doctor.sh restart` 
+  ```bash
+  ./run_service_doctor.sh watch
+  ```
 
-Clean all containers and related networks and volumes, as well as virtual environment for python is removed as well.
+* **Stop the Application**
+  Gracefully shut down all services:
 
-`run_service_doctor.sh cleam` 
+  ```bash
+  ./run_service_doctor.sh stop
+  ```
 
+* **Restart the Application**
+  Stop and immediately restart the app and related services:
 
+  ```bash
+  ./run_service_doctor.sh restart
+  ```
+
+* **Clean Up**
+  Remove Docker containers, volumes, networks, and the Python virtual environment:
+
+  ```bash
+  ./run_service_doctor.sh clean
+  ```

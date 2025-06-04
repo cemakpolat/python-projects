@@ -69,3 +69,6 @@ Use the `run_service_doctor.sh` script to control the application:
   ```bash
   ./run_service_doctor.sh clean
   ```
+### Medium
+To read on Medium: https://medium.com/@akpolatcem/refactoring-a-linux-monitoring-app-with-solid-and-clean-architecture-062b7fa7320f
+

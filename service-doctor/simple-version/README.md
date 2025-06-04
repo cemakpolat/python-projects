@@ -1,10 +1,32 @@
+## 🩺 A Lightweight Service Doctor for Linux Environments
 
-# A Lightweight Service Doctor/Monitor for Linux Environments
+This tool monitors critical Linux services and notifies you in case of failures. Follow these steps to set it up in your environment:
 
-Add executable permission for the files  `prepare_env.sh` and `run_service_monitor.sh` via `chmod +x`
+### 🔧 Setup Instructions
 
-Run `prepare_env.sh` to install python, docker and docker compose
+1. **Make Shell Scripts Executable**
+   Grant execution permissions to the setup and runner scripts:
 
-Configure env and config.json to adapt your environment coditions
+   ```bash
+   chmod +x prepare_env.sh run_service_monitor.sh
+   ```
 
-Run `run_service_monitor.sh` to start service-doctor service.
+2. **Install Dependencies**
+   Run the setup script to install Python, Docker, and Docker Compose:
+
+   ```bash
+   ./prepare_env.sh
+   ```
+
+3. **Configure Your Environment**
+
+   * Edit the `.env` file to provide necessary credentials (e.g., email, database passwords, webhook URLs).
+   * Update `config.json` to reflect the services you want to monitor and which integrations to enable.
+
+4. **Start the Service Doctor**
+   Launch the monitoring application with:
+
+   ```bash
+   ./run_service_monitor.sh
+   ```
+
